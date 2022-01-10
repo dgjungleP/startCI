@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag dgjungle/hello_ci:$(date +%s)
+        run: docker build . --file Dockerfile --tag dgjungle/hello_ci:v2
       - name: Login Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_HUB_USER_NAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
       - name: Push Docker Image
-        run: docker push   dgjungle/hello_ci
+        run: docker push   dgjungle/hello_ci:v2
